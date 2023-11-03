@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Product Management</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../public/css/index.css" />
+  </head>
+
+  <body>
+    <main class="bg-dark">
+      <div class="container product-managerment bg-base">
+        <h2 class="title-cyber">
+          <span class="cyber--title">Product Management</span>
+        </h2>
+
+        <div class="product-managerment__content">
+          <div class="mb-4 text-right">
+
+            <!-- ADD PRODUCT BUTTON -->
+            <button
+              id="btnPopupModalAdd"
+              class="btn btn-lg btn-outline-warning"
+              data-toggle="modal"
+              data-target="#productModal"
+            >
+              Add Product
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="productModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="productModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                  <!-- MODAL HEADER -->
+                  <div class="modal-header">
+                    <h5
+                      id="title-model"
+                      class="modal-title"
+                      id="exampleModalLabel"
+                    >
+                      Add Product
+                    </h5>
+
+                    <!-- X BUTTON -->
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <!-- MODAL BODY -->
+                  <div class="modal-body">
+                    <form>
+                      <!-- NAME -->
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text min-width"
+                            >Name</span
+                          >
+                        </div>
+
+                        <input
+                          id="name"
+                          type="text"
+                          class="form-control"
+                          placeholder="please input ..."
+                          aria-label="name"
+                          aria-describedby="name"
+                        />
+                      </div>
+
+                      <!-- AMOUNT -->
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text min-width"
+                            >Amount</span
+                          >
+                        </div>
+
+                        <input
+                          id="amount"
+                          type="text"
+                          class="form-control"
+                          placeholder="Amount ... "
+                          aria-label="Amount"
+                          aria-describedby="amount"
+                        />
+                      </div>
+
+                      <!-- PRICE -->
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text min-width"
+                            >Price</span
+                          >
+                        </div>
+
+                        <input
+                          id="price"
+                          type="text"
+                          class="form-control"
+                          placeholder="Price ... "
+                          aria-label="Price"
+                          aria-describedby="price"
+                        />
+                      </div>
+
+                      <!-- SALE -->
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text min-width" for="sale"
+                            >SaleOff?</label
+                          >
+                        </div>
+
+                        <select id="sale" class="custom-select">
+                          <option selected>Choose status ...</option>
+                          <option value="true">true</option>
+                          <option value="false">false</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- MODAL FOOTER -->
+                  <div class="modal-footer">
+                    <!-- CLOSE BUTTON -->
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+
+                    <!-- ADD BUTTON -->
+                    <button
+                      id="addProduct"
+                      type="button"
+                      class="btn btn-outline-warning"
+                    >
+                      Add
+                    </button>
+
+                    <!-- UPDATE BUTTON -->
+                    <button
+                      id="updateProduct"
+                      type="button"
+                      class="btn btn-outline-warning"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOW PRODUCT LIST -->
+          <div class="product-list">
+            <table class="table">
+              <thead class="color__white header__size">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">SaleOff?</th>
+                </tr>
+              </thead>
+
+              <tbody id="tbody" class="color__white body__size"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Noti Messages -->
+    <div
+      class="modal fade"
+      id="modalMessage"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalMessageLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <p class="alert alert-primary" id="message-content">
+          Successfully
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../src/index.js" type="module"></script>
+  </body>
+</html>
